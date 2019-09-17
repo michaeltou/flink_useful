@@ -9,7 +9,7 @@ import org.apache.flink.util.Collector;
 
 /**
  * created by douming on 2019/7/17.
- * 功能描述：
+ * 功能描述：从网络socket接收数据,进行流式计算。
  */
 public class SocketWindowWordCount {
 

@@ -23,15 +23,15 @@ public class ReadThenWriteToKafkaStream {
         Properties properties = new Properties();
         properties.setProperty("bootstrap.servers", "106.14.95.210:9092");
         // properties.setProperty("zookeeper.connect", "106.14.95.210:2181");
-        properties.setProperty("group.id", "mygroup");
+        properties.setProperty("group.id", "testgroup");
 
         DataStream< String > messageStream = env.addSource
-                (new FlinkKafkaConsumer<String>("test",
+                (new FlinkKafkaConsumer<String>("flink-test",
                         new SimpleStringSchema(), properties));
         DataStream< String > resultStream =     messageStream.rebalance().map(new MapFunction<String, String>() {
             @Override
             public String map(String value) throws Exception {
-                return "Kafka and Flink says: " + value;
+                return "Flink read from kafka,says:" + value;
             }
         }) ;
 
